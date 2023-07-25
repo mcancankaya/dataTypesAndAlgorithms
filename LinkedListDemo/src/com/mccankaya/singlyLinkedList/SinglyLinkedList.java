@@ -1,16 +1,13 @@
-package com.mccankaya.linkedList;
-
-import java.util.Iterator;
+package com.mccankaya.singlyLinkedList;
 
 /**
  * @author can
  */
-public class LinkedList<T> {
+public class SinglyLinkedList<T> {
 	private Node<T> head;
 	private Node<T> tail;
 
-	public LinkedList() {
-		// TODO Auto-generated constructor stub
+	public SinglyLinkedList() {
 	}
 
 	public void addFirst(T data) {

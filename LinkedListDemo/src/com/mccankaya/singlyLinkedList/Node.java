@@ -1,7 +1,7 @@
-package com.mccankaya.linkedList;
+package com.mccankaya.singlyLinkedList;
 
 /**
- @author can 
+* @author can
 */
 
 public class Node<T>{
@@ -18,7 +18,7 @@ public class Node<T>{
 	}
 	
 	public Node() {
-	
+		
 	}
 	
 	public T getData() {
