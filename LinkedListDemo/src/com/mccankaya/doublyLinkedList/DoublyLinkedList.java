@@ -51,35 +51,48 @@ public class DoublyLinkedList<T> {
 	}
 
 	public void removeFirst() {
-		Node<T> temp = head.getNext();
-		if (!checkHeadIsNull()) {
-			temp.setPrevious(null);
-			head = temp;
+		if (getLength() <= 1) {
+			head = null;
+			tail = null;
+		} else {
+			head = head.getNext();
+			head.setPrevious(null);
+
 		}
 
 	}
 
 	public void removeLast() {
-		Node<T> temp = tail.getPrevious();
-		if (!checkTailIsNull()) {
-			temp.setNext(null);
-			tail = temp;
+		if (getLength() <= 1) {
+			head = null;
+			tail = null;
+		} else {
+			tail = tail.getPrevious();
+			tail.setNext(null);
+
 		}
 
 	}
 
 	public void removeIndex(int index) {
-		Node<T> tempPrev = head;
-		Node<T> temp = head;
-		int i = 0;
-		while (i < index) {
-			tempPrev = temp;
-			temp = temp.getNext();
-			i++;
-		}
+		if (index == 0) {
+			removeFirst();
+		} else if (index >= getLength() - 1) {
+			removeLast();
+		} else {
+			Node<T> tempPrev = head;
+			Node<T> temp = head;
+			int i = 0;
 
-		tempPrev.setNext(temp.getNext());
-		temp.getNext().setPrevious(tempPrev);
+			while (i < index) {
+				temp = temp.getNext();
+				tempPrev = temp.getPrevious();
+				i++;
+			}
+			tempPrev.setNext(temp.getNext());
+			tempPrev.getNext().setPrevious(tempPrev);
+
+		}
 
 	}
 
@@ -112,10 +125,14 @@ public class DoublyLinkedList<T> {
 	}
 
 	public void printList() {
-		Node<T> temp = head;
-		while (temp != null) {
-			System.out.print(temp.getData() + " <-> ");
-			temp = temp.getNext();
+		if (checkHeadIsNull()) {
+			return;
+		} else {
+			Node<T> temp = head;
+			do {
+				System.out.print(temp.getData() + " <-> ");
+				temp = temp.getNext();
+			} while (temp != tail.getNext());
 		}
 	}
 
@@ -123,7 +140,4 @@ public class DoublyLinkedList<T> {
 		return head == null ? true : false;
 	}
 
-	private boolean checkTailIsNull() {
-		return tail == null ? true : false;
-	}
 }

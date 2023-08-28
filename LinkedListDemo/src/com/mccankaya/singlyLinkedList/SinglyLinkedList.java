@@ -80,15 +80,14 @@ public class SinglyLinkedList<T> {
 		Node<T> tempPrev = head;
 		Node<T> temp = head;
 		int i = 0;
-		while (i<index) {
-			
+		while (i < index) {
+
 			tempPrev = temp;
 			temp = temp.getNext();
 			i++;
 		}
 		tempPrev.setNext(temp.getNext());
-		
-		
+
 	}
 
 	public void printList() {
